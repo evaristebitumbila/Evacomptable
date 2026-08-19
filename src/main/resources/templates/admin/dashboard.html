@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Back office — EVA Compta Consulting</title>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:center;">
+      <a href="/" class="nav-cta" style="background:var(--ink-soft);">Voir le site</a>
+      <form th:action="@{/logout}" method="post" style="margin:0;">
+        <button type="submit" class="nav-cta" style="border:none;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="bo-wrap">
+  <div class="bo-head">
+    <h1><i class="fa-solid fa-gauge-high" style="color:var(--accent);"></i> Back office</h1>
+    <a th:href="@{/admin/formations/new}" class="btn-bo"><i class="fa-solid fa-plus"></i> Nouvelle formation</a>
+  </div>
+  <p class="bo-sub">Gérez vos formations (cartes 3D), leurs modules et leurs sessions.</p>
+
+  <div class="bo-flash" th:if="${msg}" th:text="${msg}"></div>
+
+  <div class="bo-tabs">
+    <a th:href="@{/admin}" class="bo-tab on"><i class="fa-solid fa-graduation-cap"></i> Formations</a>
+    <a th:href="@{/admin/associes}" class="bo-tab"><i class="fa-solid fa-user-tie"></i> Associés</a>
+    <a th:href="@{/admin/password}" class="bo-tab"><i class="fa-solid fa-key"></i> Mot de passe</a>
+  </div>
+
+  <div class="bo-card">
+    <h2><i class="fa-solid fa-list"></i> Formations publiées (<span th:text="${formations.size()}">0</span>)</h2>
+    <p th:if="${formations.isEmpty()}" style="color:var(--mist);">Aucune formation. Cliquez sur « Nouvelle formation ».</p>
+
+    <div class="bo-item" th:each="f : ${formations}">
+      <div class="bo-thumb"
+           th:with="img=(${f.image != null and !f.image.isEmpty()} ? ('/uploads/' + ${f.image}) : '/logo.png')"
+           th:style="'background-image:url(' + ${img} + ')'"></div>
+      <div class="bo-item-info">
+        <strong th:text="${f.titre}">Titre</strong>
+        <span th:text="${f.badge} + ' · ' + ${f.modules.size()} + ' module(s)'">badge</span>
+      </div>
+      <div class="bo-actions">
+        <a th:href="@{|/admin/formations/${f.id}/modules|}" class="btn-bo dark sm"><i class="fa-solid fa-layer-group"></i> Modules &amp; sessions</a>
+        <a th:href="@{|/admin/formations/${f.id}/edit|}" class="btn-bo ghost sm"><i class="fa-solid fa-pen"></i> Modifier</a>
+        <form th:action="@{|/admin/formations/${f.id}/delete|}" method="post"
+              onsubmit="return confirm('Supprimer cette formation et ses modules ?');" style="margin:0;">
+          <button type="submit" class="btn-bo danger sm"><i class="fa-solid fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

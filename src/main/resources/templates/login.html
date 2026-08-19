@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — EVA Compta Consulting</title>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <div style="margin-left:auto;"><a href="/" class="nav-cta">Voir le site</a></div>
+  </div>
+</header>
+
+<div class="login-screen">
+  <div class="login-ico"><i class="fa-solid fa-lock"></i></div>
+  <h2>Espace administrateur</h2>
+  <p class="hint">Connectez-vous pour gérer vos formations.</p>
+
+  <div class="bo-flash err" th:if="${param.error}" style="margin-top:18px;">
+    Adresse e-mail ou mot de passe incorrect.
+  </div>
+
+  <form th:action="@{/login}" method="post">
+    <label for="username">Adresse e-mail</label>
+    <input type="text" id="username" name="username" placeholder="evahsambidambo@gmail.com" autocomplete="username" required>
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+    <button type="submit" class="btn-bo" style="width:100%;justify-content:center;margin-top:22px;">
+      <i class="fa-solid fa-right-to-bracket"></i> Se connecter
+    </button>
+  </form>
+  <a href="/" style="display:block;text-align:center;margin-top:16px;color:var(--mist);font-size:13px;text-decoration:underline;">← Retour au site</a>
+</div>
+
+</body>
+</html>

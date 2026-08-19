@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modules &amp; sessions — Back office</title>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:center;">
+      <a href="/" class="nav-cta" style="background:var(--ink-soft);">Voir le site</a>
+      <form th:action="@{/logout}" method="post" style="margin:0;">
+        <button type="submit" class="nav-cta" style="border:none;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="bo-wrap">
+  <div class="bo-head">
+    <h1><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> Modules &amp; sessions</h1>
+    <a th:href="@{/admin}" class="btn-bo ghost"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+  </div>
+  <p class="bo-sub">Formation : <strong th:text="${formation.titre}">Titre</strong></p>
+
+  <div class="bo-flash" th:if="${msg}" th:text="${msg}"></div>
+
+  <div class="bo-card">
+    <h2><i class="fa-solid fa-plus"></i> Ajouter un module</h2>
+    <form th:action="@{|/admin/formations/${formation.id}/modules/add|}" method="post" style="display:flex;gap:10px;flex-wrap:wrap;">
+      <input type="text" name="titre" placeholder="Ex : Module 1 : Introduction au métier de caissier(ère)" style="flex:1;min-width:240px;" required>
+      <button type="submit" class="btn-bo"><i class="fa-solid fa-plus"></i> Ajouter</button>
+    </form>
+  </div>
+
+  <div class="bo-card">
+    <h2><i class="fa-solid fa-list"></i> Modules (<span th:text="${formation.modules.size()}">0</span>)</h2>
+    <p th:if="${formation.modules.isEmpty()}" style="color:var(--mist);">Aucun module. Ajoutez-en un ci-dessus.</p>
+
+    <div class="mod-block" th:each="m : ${formation.modules}">
+      <div class="mod-block-head">
+        <span class="chk"><i class="fa-solid fa-folder-open"></i></span>
+        <form th:action="@{|/admin/modules/${m.id}/rename|}" method="post" style="display:flex;gap:8px;flex:1;flex-wrap:wrap;">
+          <input type="hidden" name="formationId" th:value="${formation.id}">
+          <input type="text" name="titre" th:value="${m.titre}" required>
+          <button type="submit" class="btn-bo ghost sm"><i class="fa-solid fa-floppy-disk"></i></button>
+        </form>
+        <span style="font-size:12px;color:var(--mist);" th:text="${m.nombreSessions} + ' session(s)'">0 session</span>
+        <form th:action="@{|/admin/modules/${m.id}/delete|}" method="post" onsubmit="return confirm('Supprimer ce module et ses sessions ?');" style="margin:0;">
+          <input type="hidden" name="formationId" th:value="${formation.id}">
+          <button type="submit" class="btn-bo danger sm"><i class="fa-solid fa-trash"></i></button>
+        </form>
+      </div>
+
+      <div style="padding-left:8px;">
+        <div class="sess-row" th:each="s : ${m.sessions}">
+          <span class="chk"><i class="fa-solid fa-circle-check"></i></span>
+          <form th:action="@{|/admin/sessions/${s.id}/rename|}" method="post" style="display:flex;gap:8px;flex:1;">
+            <input type="hidden" name="formationId" th:value="${formation.id}">
+            <input type="text" name="intitule" th:value="${s.intitule}" required>
+            <button type="submit" class="btn-bo ghost sm"><i class="fa-solid fa-floppy-disk"></i></button>
+          </form>
+          <form th:action="@{|/admin/sessions/${s.id}/delete|}" method="post" style="margin:0;">
+            <input type="hidden" name="formationId" th:value="${formation.id}">
+            <button type="submit" class="btn-bo danger sm"><i class="fa-solid fa-xmark"></i></button>
+          </form>
+        </div>
+
+        <form th:action="@{|/admin/modules/${m.id}/sessions/add|}" method="post" style="display:flex;gap:8px;margin-top:12px;">
+          <input type="hidden" name="formationId" th:value="${formation.id}">
+          <input type="text" name="intitule" placeholder="Nouvelle session (ex : Définition du métier)" style="flex:1;padding:8px 11px;border:1.5px solid var(--line);border-radius:7px;" required>
+          <button type="submit" class="btn-bo dark sm"><i class="fa-solid fa-plus"></i> Session</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

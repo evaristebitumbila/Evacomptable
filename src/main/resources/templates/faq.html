@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrières — EVA Compta Consulting SARL</title>
+<meta name="description" content="Rejoignez Meridian : postes ouverts en audit, conseil, stratégie et data.">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <nav class="nav-links">
+      <a href="/" data-fr="Accueil" data-en="Home">Accueil</a>
+      <a href="/services" data-fr="Services" data-en="Services">Services</a>
+      <a href="/faq" class="active">FAQ</a>
+      <a href="/cabinet" data-fr="À propos" data-en="About">À propos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:18px;">
+      <div class="lang-switch">
+        <button data-lang="fr" class="active" aria-label="Français"><span class="flag flag-fr"></span></button><button data-lang="en" aria-label="English"><span class="flag flag-en"></span></button>
+      </div>
+      <a href="/contact" class="nav-cta" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-cta" style="background:var(--ink-soft);"><i class="fa-solid fa-right-to-bracket"></i> Se connecter</a>
+      <a sec:authorize="isAuthenticated()" th:href="@{/admin}" class="nav-cta" style="background:var(--ink-soft);"><i class="fa-solid fa-gauge-high"></i> Back office</a>
+      <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" style="margin:0;"><button type="submit" class="nav-cta" style="border:none;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</button></form>
+    </div>
+    <button class="menu-toggle" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h1>Vos questions, nos réponses.</h1>
+    <p>Les réponses aux questions les plus fréquentes sur nos services, nos tarifs et notre fonctionnement. Vous ne trouvez pas votre réponse ? Contactez-nous.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap faq-wrap">
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Quels sont vos domaines d'intervention ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Nous intervenons sur quatre domaines principaux : la comptabilité générale, la fiscalité, l'audit et commissariat aux comptes, ainsi que la formation professionnelle. Nous proposons aussi du conseil, le commissariat aux comptes, la gestion de la paie et l'accompagnement à la création d'entreprise.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Travaillez-vous avec les petites entreprises et les particuliers ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Oui. Nous accompagnons les PME, les TPE, les startups, les professions libérales, les associations et les particuliers. Chaque client bénéficie d'un accompagnement adapté à sa taille et à ses besoins spécifiques.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Comment sont fixés vos tarifs ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Nos tarifs sont établis sur devis, en fonction de la nature et du volume de la mission. Contactez-nous pour un devis gratuit et sans engagement, adapté à votre situation.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Proposez-vous des formations ? Comment s'inscrire ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Oui, nous organisons des formations théoriques et pratiques (comptabilité, fiscalité, Sage 100, Excel, paie, etc.), sous forme de séminaires, ateliers ou sessions individuelles. Pour vous inscrire, contactez-nous par téléphone, WhatsApp ou via le formulaire de contact. Une attestation est délivrée à l'issue de chaque formation.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Où êtes-vous situés ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Notre cabinet est situé à Kinshasa, dans la commune de la Gombe, en République Démocratique du Congo. Nous recevons sur rendez-vous, du lundi au vendredi de 8h00 à 17h00.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Vos prestations sont-elles conformes aux normes ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Absolument. Nos missions d'audit sont réalisées dans le strict respect des Normes Internationales d'Audit (ISA) publiées par l'IFAC. Nous appliquons rigoureusement les normes comptables et fiscales en vigueur en RDC.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Comment vous contacter rapidement ?</span><i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Le plus rapide est de nous écrire sur WhatsApp via le bouton vert en bas de page, ou de nous appeler au +243 820 289 200. Vous pouvez aussi remplir le formulaire de contact ou nous envoyer un email à evahsambidambo@gmail.com.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Vous avez une autre question ?</h2>
+    <p>Notre équipe est à votre disposition pour répondre à toutes vos questions sur la comptabilité, la fiscalité, l'audit ou la formation.</p>
+    <a href="/contact" class="btn btn-dark">Nous contacter
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand"><span class="mark"></span>EVA Compta Consulting</a>
+        <p>Cabinet d'expertise fiscale, comptable et d'audit à Kinshasa. Nous accompagnons entreprises et institutions dans la sécurisation de leurs obligations en RDC.</p>
+        <form class="footer-news">
+          <input type="email" placeholder="Votre email professionnel" data-fr-ph="Votre email professionnel" data-en-ph="Your work email" aria-label="Email newsletter">
+          <button type="submit" aria-label="S'inscrire"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <div class="footer-social">
+          <a href="https://wa.me/243820289200" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/evariste.bitumbila.9" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/evaristebitumbila?igsh=MW9vbGJrMjgxc2xhOQ==" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="/services">Expertise fiscale</a><a href="/services">Expertise comptable</a><a href="/services">Audit & commissariat</a><a href="/services">Formation</a></div>
+      <div class="footer-col"><h4>Cabinet</h4><a href="/cabinet">À propos</a><a href="/cabinet">Nos associés</a><a href="/faq">FAQ</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="/contact">Kinshasa, Gombe</a><a href="tel:+243820289200">+243 820 289 200</a><a href="mailto:evahsambidambo@gmail.com">evahsambidambo@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 EVA Compta Consulting SARL. Tous droits réservés.</span><span>Mentions légales · Confidentialité · Déontologie</span></div>
+  </div>
+</footer>
+
+
+<!-- Widget WhatsApp -->
+<div class="wa-widget" id="wa-widget">
+  <!-- Panneau de chat -->
+  <div class="wa-panel" id="wa-panel" aria-hidden="true">
+    <div class="wa-panel-head">
+      <div class="wa-avatar"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="wa-head-info">
+        <strong>EVA Compta Consulting</strong>
+        <span><span class="wa-dot"></span> En ligne</span>
+      </div>
+      <button class="wa-close" id="wa-close" aria-label="Fermer">&times;</button>
+    </div>
+    <div class="wa-panel-body">
+      <div class="wa-bubble">
+        Bonjour 👋<br>Comment pouvons-nous vous aider aujourd'hui ? Posez votre question, nous vous répondons sur WhatsApp.
+      </div>
+    </div>
+    <a class="wa-start" href="https://wa.me/243820289200?text=Bonjour%20EVA%20Compta%20Consulting%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp"></i> Démarrer la conversation
+    </a>
+  </div>
+  <!-- Bulle flottante -->
+  <button class="wa-fab" id="wa-fab" aria-label="Ouvrir le chat WhatsApp">
+    <i class="fa-brands fa-whatsapp" id="wa-fab-icon"></i>
+  </button>
+</div>
+
+<script src="/translations.js"></script>
+<script src="/main.js"></script>
+</body>
+</html>

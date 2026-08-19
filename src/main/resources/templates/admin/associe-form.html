@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Associé — Back office</title>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:center;">
+      <a href="/" class="nav-cta" style="background:var(--ink-soft);">Voir le site</a>
+      <form th:action="@{/logout}" method="post" style="margin:0;">
+        <button type="submit" class="nav-cta" style="border:none;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="bo-wrap">
+  <div class="bo-head">
+    <h1><i class="fa-solid fa-user-tie" style="color:var(--accent);"></i>
+      <span th:text="${associe.id != null}? 'Modifier un associé' : 'Nouvel associé'">Associé</span>
+    </h1>
+    <a th:href="@{/admin/associes}" class="btn-bo ghost"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+  </div>
+
+  <div class="bo-card">
+    <form th:action="@{/admin/associes/save}" th:object="${associe}" method="post" enctype="multipart/form-data">
+      <input type="hidden" th:field="*{id}">
+      <input type="hidden" th:field="*{photo}">
+
+      <label>Nom complet *</label>
+      <input type="text" th:field="*{nom}" placeholder="Ex : Evariste Bitumbila">
+      <p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" style="color:#c0392b;font-size:12.5px;margin-top:6px;"></p>
+
+      <div class="bo-row">
+        <div>
+          <label>Fonction</label>
+          <input type="text" th:field="*{role}" placeholder="Associé(e) · Expertise comptable">
+        </div>
+        <div>
+          <label>Position (ordre d'affichage)</label>
+          <input type="number" th:field="*{position}" min="0">
+        </div>
+      </div>
+
+      <label>Présentation</label>
+      <textarea th:field="*{bio}" placeholder="Parcours, spécialités et domaines d'intervention…"></textarea>
+
+      <label style="margin-top:16px;">Photo (facultative)</label>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+        <img th:if="*{photo != null and !photo.isEmpty()}" th:src="@{|/uploads/${associe.photo}|}"
+             style="height:64px;border-radius:8px;border:1.5px solid var(--line);">
+        <input type="file" name="photoFile" accept="image/*">
+      </div>
+      <p style="font-size:12px;color:var(--mist);margin-top:6px;">
+        Sans photo, les initiales du nom s'affichent (comme aujourd'hui).
+        Laissez vide pour conserver la photo actuelle (en modification).
+      </p>
+
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+        <button type="submit" class="btn-bo">
+          <i class="fa-solid fa-check"></i>
+          <span th:text="${associe.id != null}? 'Enregistrer' : 'Publier'">Publier</span>
+        </button>
+        <a th:href="@{/admin/associes}" class="btn-bo ghost">Annuler</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

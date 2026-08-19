@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation — Back office</title>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:center;">
+      <a href="/" class="nav-cta" style="background:var(--ink-soft);">Voir le site</a>
+      <form th:action="@{/logout}" method="post" style="margin:0;">
+        <button type="submit" class="nav-cta" style="border:none;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="bo-wrap">
+  <div class="bo-head">
+    <h1><i class="fa-solid fa-graduation-cap" style="color:var(--accent);"></i>
+      <span th:text="${formation.id != null}? 'Modifier la formation' : 'Nouvelle formation'">Formation</span>
+    </h1>
+    <a th:href="@{/admin}" class="btn-bo ghost"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+  </div>
+
+  <div class="bo-card">
+    <form th:action="@{/admin/formations/save}" th:object="${formation}" method="post" enctype="multipart/form-data">
+      <input type="hidden" th:field="*{id}">
+      <input type="hidden" th:field="*{image}">
+
+      <label>Titre *</label>
+      <input type="text" th:field="*{titre}" placeholder="Ex : Comptabilité OHADA – Sage 100 + Excel">
+
+      <div class="bo-row">
+        <div><label>Badge</label><input type="text" th:field="*{badge}" placeholder="Formation · 150 $"></div>
+        <div><label>Position (ordre d'affichage)</label><input type="number" th:field="*{position}" min="0"></div>
+      </div>
+
+      <label>Description courte (affichée sur la carte) *</label>
+      <textarea th:field="*{description}" placeholder="Texte court résumant la formation…"></textarea>
+
+      <label>Contenu complet (affiché sur la page de détail)</label>
+      <div class="rte-toolbar">
+        <button type="button" class="rte-btn" title="Gras" onclick="fmt('bold')"><b>G</b></button>
+        <button type="button" class="rte-btn" title="Italique" onclick="fmt('italic')"><i>I</i></button>
+        <button type="button" class="rte-btn" title="Souligné" onclick="fmt('underline')"><u>S</u></button>
+        <button type="button" class="rte-btn" title="Liste à puces" onclick="fmt('insertUnorderedList')">•≡</button>
+        <button type="button" class="rte-btn" title="Liste numérotée" onclick="fmt('insertOrderedList')">1≡</button>
+        <button type="button" class="rte-btn" title="Lien" onclick="addLink()"><i class="fa-solid fa-link"></i></button>
+        <button type="button" class="rte-btn" title="Effacer le format" onclick="fmt('removeFormat')"><i class="fa-solid fa-eraser"></i></button>
+      </div>
+      <div class="rte" id="rte" contenteditable="true" data-placeholder="Objectifs, public concerné, frais…" th:utext="*{contenu}"></div>
+      <textarea name="contenu" id="contenu-hidden" style="display:none;" th:text="*{contenu}"></textarea>
+
+      <label style="margin-top:16px;">Image de l'affiche</label>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+        <img th:if="*{image != null and !image.isEmpty()}" th:src="@{|/uploads/${formation.image}|}"
+             style="height:64px;border-radius:8px;border:1.5px solid var(--line);">
+        <input type="file" name="imageFile" accept="image/*">
+      </div>
+      <p style="font-size:12px;color:var(--mist);margin-top:6px;">Laissez vide pour conserver l'image actuelle (en modification).</p>
+
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+        <button type="submit" class="btn-bo">
+          <i class="fa-solid fa-check"></i>
+          <span th:text="${formation.id != null}? 'Enregistrer' : 'Publier'">Publier</span>
+        </button>
+        <a th:href="@{/admin}" class="btn-bo ghost">Annuler</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function fmt(cmd){ document.getElementById('rte').focus(); document.execCommand(cmd,false,null); }
+  function addLink(){
+    var url = prompt('Adresse du lien (ex : https://wa.me/243820289200) :');
+    if(!url) return;
+    document.getElementById('rte').focus();
+    document.execCommand('createLink', false, url);
+  }
+  function syncContenu(){ document.getElementById('contenu-hidden').value = document.getElementById('rte').innerHTML; }
+  document.querySelector('form').addEventListener('submit', syncContenu);
+</script>
+</body>
+</html>

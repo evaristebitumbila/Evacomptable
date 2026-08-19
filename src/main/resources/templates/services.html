@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expertises — EVA Compta Consulting SARL</title>
+<meta name="description" content="Audit, conseil, stratégie, data et risque : les expertises du cabinet Meridian.">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/fontawesome.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVA Compta Consulting SARL" class="brand-logo"></a>
+    <nav class="nav-links">
+      <a href="/" data-fr="Accueil" data-en="Home">Accueil</a>
+      <a href="/services" class="active" data-fr="Services" data-en="Services">Services</a>
+      <a href="/faq">FAQ</a>
+      <a href="/cabinet" data-fr="À propos" data-en="About">À propos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:18px;">
+      <div class="lang-switch">
+        <button data-lang="fr" class="active" aria-label="Français"><span class="flag flag-fr"></span></button><button data-lang="en" aria-label="English"><span class="flag flag-en"></span></button>
+      </div>
+      <a href="/contact" class="nav-cta" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-cta" style="background:var(--ink-soft);"><i class="fa-solid fa-right-to-bracket"></i> Se connecter</a>
+      <a sec:authorize="isAuthenticated()" th:href="@{/admin}" class="nav-cta" style="background:var(--ink-soft);"><i class="fa-solid fa-gauge-high"></i> Back office</a>
+      <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" style="margin:0;"><button type="submit" class="nav-cta" style="border:none;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</button></form>
+    </div>
+    <button class="menu-toggle" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Nos services</span>
+    <h1>Expertise fiscale, comptable et audit.</h1>
+    <p>Notre cabinet met son expertise au service des entreprises, des institutions et des organisations à travers trois principaux domaines d'intervention, complétés par le conseil et la formation.</p>
+  </div>
+</section>
+
+<!-- EXPERTISE FISCALE -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 — Fiscalité</span>
+      <h2>Une expertise reconnue au service de votre sécurité fiscale</h2>
+      <p>Grâce à notre parfaite maîtrise de la législation fiscale congolaise et à notre solide expérience du contrôle fiscal, nous accompagnons aussi bien les entreprises nationales que les multinationales dans la gestion et la sécurisation de leurs obligations.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="sn">A</span>
+        <div>
+          <h3>Expertise fiscale</h3>
+          <p>Nous prévenons les risques, limitons les redressements et prémunissons nos clients contre les pratiques abusives.</p>
+          <div class="prose"><ul>
+            <li>Réalisation d'audits fiscaux</li>
+            <li>Identification des risques fiscaux et des insuffisances de conformité</li>
+            <li>Évaluation des risques de redressement</li>
+            <li>Rapports détaillés assortis de recommandations pratiques pour améliorer la conformité et réduire les pénalités</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="sn">B</span>
+        <div>
+          <h3>Assistance fiscale permanente</h3>
+          <p>Un suivi continu et complet des obligations fiscales et parafiscales de nos clients.</p>
+          <div class="prose"><ul>
+            <li>Contrôle et vérification mensuelle des déclarations fiscales</li>
+            <li>Suivi des délais de paiement des impôts et taxes</li>
+            <li>Revue des écritures comptables ayant un impact fiscal</li>
+            <li>Vérification des journaux comptables (achats, ventes, banque, opérations diverses)</li>
+          </ul></div>
+          <p style="margin-top:18px;">Nous accompagnons la gestion des principales obligations : IPR, IER, TVA, IRL, IM, IF, IBP, taxes ministérielles et décentralisées, cotisations sociales (INSS) et patronales (INPP, ONEM).</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="sn">C</span>
+        <div>
+          <h3>Assistance fiscale et parafiscale</h3>
+          <p>Nous accompagnons les entreprises durant toutes les étapes des procédures de contrôle.</p>
+          <div class="prose"><ul>
+            <li>Assistance permanente lors des contrôles et contre-vérifications</li>
+            <li>Préparation et vérification des déclarations fiscales annuelles</li>
+            <li>Introduction et suivi des recours administratifs en cas de taxation irrégulière</li>
+            <li>Accompagnement dans l'obtention des attestations fiscales</li>
+            <li>Sessions de formation et d'information sur les évolutions légales et réglementaires</li>
+            <li>Diffusion régulière des nouveaux textes (lois, décrets, arrêtés, circulaires)</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE COMPTABLE -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 — Comptabilité</span>
+      <h2>Expertise & assistance comptable</h2>
+      <p>Notre cabinet met à disposition son savoir-faire pour fiabiliser vos comptes et accompagner vos équipes au quotidien.</p>
+    </div>
+    <div class="sectors">
+      <div class="sector reveal"><span class="si">Expertise</span><h3>Redressement des comptes</h3><p>Redressement des comptes et des états financiers.</p></div>
+      <div class="sector reveal"><span class="si">Expertise</span><h3>Expertise judiciaire</h3><p>Missions d'expertise comptable judiciaire.</p></div>
+      <div class="sector reveal"><span class="si">Expertise</span><h3>Analyse financière</h3><p>Analyse et interprétation des états financiers.</p></div>
+      <div class="sector reveal"><span class="si">Assistance</span><h3>Tenue de comptabilité</h3><p>Sur notre système ou sur celui du client, avec appui aux équipes internes.</p></div>
+      <div class="sector reveal"><span class="si">Assistance</span><h3>Régularisation</h3><p>Vérification des balances mensuelles et écritures de correction.</p></div>
+      <div class="sector reveal"><span class="si">Assistance</span><h3>États financiers</h3><p>Élaboration des états financiers annuels conformément aux normes en vigueur.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 — Audit & commissariat aux comptes</span>
+      <h2>Des prestations aux meilleurs standards internationaux</h2>
+      <p>Nos missions sont réalisées dans le strict respect des Normes Internationales d'Audit (ISA) publiées par l'IFAC, garantissant qualité, indépendance et professionnalisme.</p>
+    </div>
+    <div class="prose reveal">
+      <h3>Nos engagements</h3>
+      <ul>
+        <li>Une qualité de service irréprochable</li>
+        <li>Le respect rigoureux des normes professionnelles</li>
+        <li>Des équipes hautement qualifiées</li>
+        <li>Des auditeurs spécialisés par secteur d'activité</li>
+        <li>Une démarche orientée vers la création de valeur</li>
+      </ul>
+      <h3>Un double objectif</h3>
+      <p><strong>Sur le plan externe :</strong> renforcer la crédibilité et la fiabilité des informations financières communiquées aux partenaires et investisseurs.</p>
+      <p><strong>Sur le plan interne :</strong> améliorer les dispositifs de contrôle interne, sécuriser la gestion, accompagner les dirigeants dans leur prise de décision et contribuer durablement à l'amélioration des performances et de la gouvernance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSEIL & FORMATION -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — Conseil & formation</span>
+      <h2>Accompagner votre développement et vos compétences</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="sn">A</span>
+        <div>
+          <h3>Conseil (advisory)</h3>
+          <p>Un large éventail de missions pour accompagner les entreprises dans leur développement et leur performance.</p>
+          <div class="prose"><ul>
+            <li>Missions de conseil stratégique</li>
+            <li>Procédures convenues</li>
+            <li>Accompagnement organisationnel</li>
+            <li>Mise en place et amélioration des procédures internes</li>
+            <li>Accompagnement jusqu'à la production des états financiers annuels</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="sn">B</span>
+        <div>
+          <h3>Formation professionnelle</h3>
+          <p>Un programme complet de formations théoriques et pratiques animé par des experts qualifiés, sous forme de séminaires, ateliers, formations en entreprise ou sessions individuelles.</p>
+          <div class="prose"><ul>
+            <li>Comptabilité générale et comptabilité des entreprises</li>
+            <li>Audit interne et financier, fiscalité des entreprises</li>
+            <li>Finance, gestion financière et contrôle de gestion</li>
+            <li>Ressources humaines et gestion de la paie</li>
+            <li>Métier de caissier, techniques et opérations bancaires</li>
+            <li>Sage 100 Comptabilité, Sage Paie et autres ERP de gestion</li>
+            <li>Bureautique professionnelle (Word, Excel, PowerPoint, Outlook)</li>
+            <li>Élaboration et analyse des états financiers, contrôle interne</li>
+          </ul></div>
+          <p style="margin-top:18px;">À l'issue de chaque formation, une attestation de participation ou un certificat peut être délivré selon les modalités du programme.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Besoin d'un accompagnement sur mesure ?</h2>
+    <p>Décrivez-nous votre situation. Nous proposons à chaque client des solutions adaptées à ses besoins spécifiques et conformes aux meilleures pratiques professionnelles.</p>
+    <a href="/contact" class="btn btn-dark">Nous contacter
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand"><span class="mark"></span>EVA Compta Consulting</a>
+        <p>Cabinet d'expertise fiscale, comptable et d'audit à Kinshasa. Nous accompagnons entreprises et institutions dans la sécurisation de leurs obligations en RDC.</p>
+        <form class="footer-news">
+          <input type="email" placeholder="Votre email professionnel" data-fr-ph="Votre email professionnel" data-en-ph="Your work email" aria-label="Email newsletter">
+          <button type="submit" aria-label="S'inscrire"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <div class="footer-social">
+          <a href="https://wa.me/243820289200" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/evariste.bitumbila.9" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/evaristebitumbila?igsh=MW9vbGJrMjgxc2xhOQ==" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="/services">Expertise fiscale</a><a href="/services">Expertise comptable</a><a href="/services">Audit & commissariat</a><a href="/services">Formation</a></div>
+      <div class="footer-col"><h4>Cabinet</h4><a href="/cabinet">À propos</a><a href="/cabinet">Nos associés</a><a href="/faq">FAQ</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="/contact">Kinshasa, Gombe</a><a href="tel:+243820289200">+243 820 289 200</a><a href="mailto:evahsambidambo@gmail.com">evahsambidambo@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 EVA Compta Consulting SARL. Tous droits réservés.</span><span>Mentions légales · Confidentialité · Déontologie</span></div>
+  </div>
+</footer>
+
+
+<!-- Widget WhatsApp -->
+<div class="wa-widget" id="wa-widget">
+  <!-- Panneau de chat -->
+  <div class="wa-panel" id="wa-panel" aria-hidden="true">
+    <div class="wa-panel-head">
+      <div class="wa-avatar"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="wa-head-info">
+        <strong>EVA Compta Consulting</strong>
+        <span><span class="wa-dot"></span> En ligne</span>
+      </div>
+      <button class="wa-close" id="wa-close" aria-label="Fermer">&times;</button>
+    </div>
+    <div class="wa-panel-body">
+      <div class="wa-bubble">
+        Bonjour 👋<br>Comment pouvons-nous vous aider aujourd'hui ? Posez votre question, nous vous répondons sur WhatsApp.
+      </div>
+    </div>
+    <a class="wa-start" href="https://wa.me/243820289200?text=Bonjour%20EVA%20Compta%20Consulting%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp"></i> Démarrer la conversation
+    </a>
+  </div>
+  <!-- Bulle flottante -->
+  <button class="wa-fab" id="wa-fab" aria-label="Ouvrir le chat WhatsApp">
+    <i class="fa-brands fa-whatsapp" id="wa-fab-icon"></i>
+  </button>
+</div>
+
+<script src="/translations.js"></script>
+<script src="/main.js"></script>
+</body>
+</html>
