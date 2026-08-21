@@ -24,7 +24,7 @@ public class DataInitializer {
         return args -> {
             if (adminRepo.count() == 0) {
                 adminRepo.save(new AdminUser(
-                        "evahsambidambo@gmail.com",
+                        "evabitumbila@gmail.com",
                         encoder.encode("evariste2026")
                 ));
             }

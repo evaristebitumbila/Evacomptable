@@ -23,7 +23,7 @@ window.TRANSLATIONS = {
   "Mentions légales · Confidentialité · Déontologie": "Legal notice · Privacy · Ethics",
   "© 2026 EVA Compta Consulting SARL. Tous droits réservés.": "© 2026 EVA Compta Consulting SARL. All rights reserved.",
   "Cabinet d'expertise fiscale, comptable et d'audit à Kinshasa. Nous accompagnons entreprises et institutions dans la sécurisation de leurs obligations en RDC.": "Tax, accounting and audit firm in Kinshasa. We support companies and institutions in securing their obligations in the DRC.",
-  "evahsambidambo@gmail.com": "evahsambidambo@gmail.com",
+  "evabitumbila@gmail.com": "evabitumbila@gmail.com",
   "Kinshasa, Gombe": "Kinshasa, Gombe",
   "EVA Compta Consulting": "EVA Compta Consulting",
   "EVA Compta Consulting SARL": "EVA Compta Consulting SARL",
@@ -305,7 +305,7 @@ window.TRANSLATIONS = {
   "Vos prestations sont-elles conformes aux normes ?": "Are your services standards-compliant?",
   "Absolument. Nos missions d'audit sont réalisées dans le strict respect des Normes Internationales d'Audit (ISA) publiées par l'IFAC. Nous appliquons rigoureusement les normes comptables et fiscales en vigueur en RDC.": "Absolutely. Our audit engagements are carried out in strict compliance with the International Standards on Auditing (ISA) published by IFAC. We rigorously apply the accounting and tax standards in force in the DRC.",
   "Comment vous contacter rapidement ?": "How can I reach you quickly?",
-  "Le plus rapide est de nous écrire sur WhatsApp via le bouton vert en bas de page, ou de nous appeler au +243 820 289 200. Vous pouvez aussi remplir le formulaire de contact ou nous envoyer un email à evahsambidambo@gmail.com.": "The fastest way is to message us on WhatsApp via the green button at the bottom of the page, or call us at +243 820 289 200. You can also fill out the contact form or email us at evahsambidambo@gmail.com.",
+  "Le plus rapide est de nous écrire sur WhatsApp via le bouton vert en bas de page, ou de nous appeler au +243 820 289 200. Vous pouvez aussi remplir le formulaire de contact ou nous envoyer un email à evabitumbila@gmail.com.": "The fastest way is to message us on WhatsApp via the green button at the bottom of the page, or call us at +243 820 289 200. You can also fill out the contact form or email us at evabitumbila@gmail.com.",
   "Vous avez une autre question ?": "Have another question?",
   "Notre équipe est à votre disposition pour répondre à toutes vos questions sur la comptabilité, la fiscalité, l'audit ou la formation.": "Our team is at your disposal to answer all your questions about accounting, taxation, audit or training.",
 

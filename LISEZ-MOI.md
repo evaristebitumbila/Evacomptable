@@ -37,7 +37,7 @@ Puis ouvrez **http://localhost:8080**
 ## Connexion
 
 - Bouton « Se connecter » dans la navbar
-- E-mail : evahsambidambo@gmail.com
+- E-mail : evabitumbila@gmail.com
 - Mot de passe : evariste2026
 - Changez ce mot de passe (Back office → Mot de passe).
 
