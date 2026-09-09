@@ -30,7 +30,7 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         source: "target/eva-compta-1.0.0.jar"
-        target: "/root/EVACOMPTAVersionFinal/"
+        target: "/root/EVACOMPTAVersionFinal/target/"
         strip_components: 1
 
     - name: Exécution du script de déploiement
